@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 
 /**
@@ -35,7 +36,7 @@ public class TeleOp extends LinearOpMode {
                 robot.bar.setPower(gamepad1.right_trigger);
             else
                 robot.bar.setPower(0);
-            robot.launcher.setPower(-gamepad2.right_stick_y);
+
             /*if (gamepad2.left_stick_y > 0.5){
                robot.yoga.setPower(0.5);
             } else if (gamepad2.left_stick_y < -0.5){
@@ -44,7 +45,18 @@ public class TeleOp extends LinearOpMode {
                robot.yoga.serPower(-gamepad2.left_stick_y);
             }
             */
-        }
+            if (gamepad1.x){
+                robot.left.setDirection(DcMotorSimple.Direction.REVERSE);
+                robot.right.setDirection(DcMotorSimple.Direction.REVERSE);
+            }
+            if (gamepad1.y){
+                robot.left.setDirection(DcMotorSimple.Direction.FORWARD);
+                robot.right.setDirection(DcMotorSimple.Direction.FORWARD);
+            }
+            if (gamepad1.a)
+                robot.launcher.setPower(-1.0);
+            if (gamepad1.b)
+                robot.launcher.setPower(0.0);
     }
 }
 
