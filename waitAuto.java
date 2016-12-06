@@ -1,11 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
-
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name="BasicAuto", group="Autonomous")
-public class BasicAuto extends LinearOpMode{
+/**
+ * Created by ftclh on 12/3/2016.
+ */
+
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name="WaitAuto", group="Autonomous")
+public class waitAuto extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException{
         HardwareRobot robot = new HardwareRobot();
@@ -24,6 +27,7 @@ public class BasicAuto extends LinearOpMode{
 
 
         //double check the distance to cap ball
+        sleep(20000);
         robot.right.setPower(-1.0);
         robot.left.setPower(-1.0);
         sleep(3500);
@@ -31,5 +35,3 @@ public class BasicAuto extends LinearOpMode{
         robot.left.setPower(0);
     }
 }
-
-
