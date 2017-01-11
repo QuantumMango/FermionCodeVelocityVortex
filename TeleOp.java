@@ -19,7 +19,7 @@ public class TeleOp extends LinearOpMode {
         robot.init(hardwareMap);
         robot.left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        //robot.launcher.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.launcher.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //robot.yoga.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //robot.bar.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
@@ -45,18 +45,21 @@ public class TeleOp extends LinearOpMode {
                robot.yoga.serPower(-gamepad2.left_stick_y);
             }
             */
-            if (gamepad1.x) {
-                robot.left.setDirection(DcMotorSimple.Direction.REVERSE);
-                robot.right.setDirection(DcMotorSimple.Direction.REVERSE);
+            if (gamepad1.x)
+                if (robot.left.getDirection().equals(DcMotorSimple.Direction.FORWARD)
+                        && robot.right.getDirection().equals(DcMotorSimple.Direction.FORWARD)) {
+                    robot.left.setDirection(DcMotorSimple.Direction.REVERSE);
+                    robot.right.setDirection(DcMotorSimple.Direction.REVERSE);
+                }
+                else{
+                    robot.left.setDirection(DcMotorSimple.Direction.FORWARD);
+                    robot.right.setDirection(DcMotorSimple.Direction.FORWARD);
             }
-            if (gamepad1.y) {
-                robot.left.setDirection(DcMotorSimple.Direction.FORWARD);
-                robot.right.setDirection(DcMotorSimple.Direction.FORWARD);
-            }
-            /*if (gamepad1.a)
-                robot.launcher.setPower(-1.0);
-            if (gamepad1.b)
-                robot.launcher.setPower(0.0);*/
+            if (gamepad1.a)
+                if (robot.launcher.getPower()< -1.0)
+                    robot.launcher.setPower(-1.0);
+                else
+                    robot.launcher.setPower(0.0);
         }
     }
 }
