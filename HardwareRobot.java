@@ -13,8 +13,9 @@ public class HardwareRobot {
     public DcMotor  left = null;
     public DcMotor right = null;
     public DcMotor launcher = null;
+    public DcMotor collector = null;
     //public DcMotor yoga = null;
-    public DcMotor bar = null;
+    //public DcMotor bar = null;
     HardwareMap map = null;
     private ElapsedTime period  = new ElapsedTime();
 
@@ -33,12 +34,15 @@ public class HardwareRobot {
         launcher = map.dcMotor.get("launcher");
         launcher.setDirection(DcMotorSimple.Direction.FORWARD);
         launcher.setPower(0);
+        collector = map.dcMotor.get("collector");
+        collector.setDirection(DcMotorSimple.Direction.FORWARD);
+        collector.setPower(0);
         /*yoga = map.dcMotor.get("yoga");
         yoga.setDirection(DcMotorSimple.Direction.FORWARD);
         yoga.setPower(0);*/
-        bar = map.dcMotor.get("bar");
+        /*bar = map.dcMotor.get("bar");
         bar.setDirection(DcMotorSimple.Direction.FORWARD);
-        bar.setPower(0);
+        bar.setPower(0);*/
     }
 
 

@@ -20,46 +20,32 @@ public class TeleOp extends LinearOpMode {
         robot.left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.launcher.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        //robot.yoga.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        //robot.bar.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.collector.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         waitForStart();
 
         while (opModeIsActive()) {
             robot.left.setPower(gamepad1.left_stick_y);
             robot.right.setPower(gamepad1.right_stick_y);
-            //foreward
-            /*if (gamepad1.left_trigger > .05)
-                robot.bar.setPower(-gamepad1.left_trigger);
-                //reverse
-            else if (gamepad1.right_trigger > .05)
-                robot.bar.setPower(gamepad1.right_trigger);
-0000000000000000000000000000000000000000000            else
-                robot.bar.setPower(0);*/
 
-            /*if (gamepad2.left_stick_y > 0.5){
-               robot.yoga.setPower(0.5);
-            } else if (gamepad2.left_stick_y < -0.5){
-               robot.yoga.setPower(0.5);
-            } else {
-               robot.yoga.serPower(-gamepad2.left_stick_y);
-            }
-            */
-            if (gamepad1.x)
+            if (gamepad1.x) {
                 if (robot.left.getDirection().equals(DcMotorSimple.Direction.FORWARD)
                         && robot.right.getDirection().equals(DcMotorSimple.Direction.FORWARD)) {
                     robot.left.setDirection(DcMotorSimple.Direction.REVERSE);
                     robot.right.setDirection(DcMotorSimple.Direction.REVERSE);
-                }
-                else{
+                } else {
                     robot.left.setDirection(DcMotorSimple.Direction.FORWARD);
                     robot.right.setDirection(DcMotorSimple.Direction.FORWARD);
+                }
             }
             if (gamepad1.a)
-                if (robot.launcher.getPower()< -1.0)
-                    robot.launcher.setPower(-1.0);
-                else
-                    robot.launcher.setPower(0.0);
+                robot.launcher.setPower(-1.0);
+            if (gamepad1.b)
+                robot.launcher.setPower(0.0);
+            if (gamepad1.left_bumper)
+                robot.collector.setPower(1.0);
+            if (gamepad1.right_bumper)
+                robot.collector.setPower(0.0);
         }
     }
 }

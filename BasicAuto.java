@@ -12,12 +12,12 @@ public class BasicAuto extends LinearOpMode{
         robot.init(hardwareMap);
         robot.right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //robot.bar.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //robot.launcher.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.collector.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.launcher.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //robot.bar.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //robot.launcher.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.collector.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.launcher.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //add yoga ball stuff
 
         waitForStart();
